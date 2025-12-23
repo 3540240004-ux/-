@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市生态规划师：候鸟迁徙守护行动</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            overflow: hidden;
+        }
+        .isometric-container {
+            perspective: 1000px;
+        }
+        .isometric-grid {
+            transform: rotateX(60deg) rotateZ(-45deg);
+            transform-style: preserve-3d;
+        }
+        /* Glass blur and other effects */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        /* Bird Eye View Filter */
+        .bird-view-morning {
+            filter: blur(4px) saturate(1.5);
+        }
+        .bird-view-night {
+            filter: brightness(2) contrast(1.2) blur(1px);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 鸟类撞击死亡专用动画 */
+        @keyframes bird-collision-death {
+            0% { 
+                transform: scale(1) rotate(0deg); 
+                color: #334155;
+            }
+            15% { 
+                transform: scale(1.6) rotate(-10deg); 
+                color: #ef4444; /* 瞬间变红 */
+            }
+            100% { 
+                transform: scale(0) rotate(180deg); 
+                color: #ef4444;
+                opacity: 0;
+            }
+        }
+        .animate-bird-die {
+            animation: bird-collision-death 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* 全屏红闪效果 */
+        @keyframes flash-red {
+            0% { opacity: 0.6; }
+            100% { opacity: 0; }
+        }
+        .death-flash-overlay {
+            animation: flash-red 0.2s ease-out forwards;
+            background-color: rgba(239, 68, 68, 0.4);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
